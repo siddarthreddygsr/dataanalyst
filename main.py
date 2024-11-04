@@ -225,7 +225,6 @@ class DataAnalysisAssistant:
                 if attempts == self.max_retries:
                     print(f"Failed after {attempts} attempts. Last error: {str(e)}")
                     raise
-                pdb.set_trace()
                 print(f"Attempt {attempts} failed: {e}")
                 print("Requesting AI to fix the error...")
 
@@ -269,11 +268,10 @@ if __name__ == "__main__":
     assistant.load_data('data/Flight Bookings.csv')
 
     # Perform initial analysis
-    # analysis_plan = assistant.analyze_data()
+    analysis_plan = assistant.analyze_data()
 
-    # while True:
-    #     question = input("> ")
-    #     if question == "e":
-    #         break
-    #     pp(assistant.query_data(question))
-    pp(assistant.query_data("can you clean the database and rename the columns according to business standard"))
+    while True:
+        question = input("> ")
+        if question == "e":
+            break
+        pp(assistant.query_data(question))
