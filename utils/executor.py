@@ -1,4 +1,4 @@
-# env/lib/python3.11/site-packages/langchain/agents/agent.py 
+# env/lib/python3.11/site-packages/langchain/agents/agent.py
 
 """Chain that takes in an input and produces an action and action input."""
 
@@ -1432,7 +1432,7 @@ class AgentExecutor(Chain):
             run_manager.on_agent_action(agent_action, color="green")
         # Otherwise we lookup the tool
         if isinstance(agent_action.tool, str):
-            agent_action.tool = agent_action.tool.replace('[','').replace(']', '')
+            agent_action.tool = agent_action.tool.replace('[', '').replace(']', '')
         if agent_action.tool in name_to_tool_map:
             tool = name_to_tool_map[agent_action.tool]
             return_direct = tool.return_direct
@@ -1628,7 +1628,7 @@ class AgentExecutor(Chain):
         start_time = time.time()
         # We now enter the agent loop (until it returns something).
         while self._should_continue(iterations, time_elapsed):
-            
+
             next_step_output = self._take_next_step(
                 name_to_tool_map,
                 color_mapping,
@@ -1745,7 +1745,7 @@ class AgentExecutor(Chain):
             isinstance(self.trim_intermediate_steps, int)
             and self.trim_intermediate_steps > 0
         ):
-            return intermediate_steps[-self.trim_intermediate_steps :]
+            return intermediate_steps[-self.trim_intermediate_steps:]
         elif callable(self.trim_intermediate_steps):
             return self.trim_intermediate_steps(intermediate_steps)
         else:
